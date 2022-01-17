@@ -1,3 +1,7 @@
+# PyJac Coin Toss
+This repository was created by the members of one of the PyJac teams. This team is comprised of Omar Alawadhi (NaiP), Mahmood Saifi (Flick), and Owais Zahid (Fiend).
+
+
 # Simulating a coin drop in a pond
 
 There's three parts to it: the water, the coin, and the air. The goal is to program them **individually** such that when we put all of them together, the interactions between them play out on their own, mimicking real life as closely as possible (as opposed to us hardcoding specific scenarios):
