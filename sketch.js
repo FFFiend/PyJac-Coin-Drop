@@ -1,5 +1,3 @@
-import { Vec } from "./structures/vec.js";
-
 // Using this pattern prevents p5 from polluting
 // the global namespace.
 const sketch = P5 => {
