@@ -2,7 +2,7 @@
 
 You have downloaded the complete p5.js library ZIP file, yay!
 
-# Contents of the p5 folder A
+# Contents of the p5 folder
 
 * p5.js file
 * p5.min.js file
