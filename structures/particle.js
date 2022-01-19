@@ -20,7 +20,7 @@ export class Particle {
         velocity.add(acceleration);
         location.add(velocity);
         acceleration.mult(0);
-        }
+    }
        
     display() {
         stroke(0);
