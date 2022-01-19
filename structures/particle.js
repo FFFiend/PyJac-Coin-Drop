@@ -16,7 +16,6 @@ export class Particle {
         this.acceleration = (force / this.mass) + this.acceleration;
     }
     
-
     update() {
         velocity.add(acceleration);
         location.add(velocity);
@@ -27,7 +26,7 @@ export class Particle {
         stroke(0);
         fill(175);
         ellipse(location.x,location.y,mass*16,mass*16);
-        }
+    }
 
 
     checkEdges() {
