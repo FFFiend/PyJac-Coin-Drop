@@ -14,6 +14,12 @@ const sketch = p => {
         world.update();
         world.display();
     }
+
+    const pauseBtn = document.querySelector("#pause");
+    pauseBtn.addEventListener("change", () => {
+        if (pauseBtn.checked) p.noLoop();
+        else p.loop();
+    })
 }
 
 // Instantiate and run sketch.

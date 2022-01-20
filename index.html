@@ -19,6 +19,9 @@
     <main>
         <!-- Checkbox for debug mode -->
         <div>
+            <input type="checkbox" id="pause" name="pause">
+            <label for="pause">Pause</label>
+            |
             <input type="checkbox" id="debug" name="debug">
             <label for="debug">Debug Mode</label>
             |
@@ -39,10 +42,8 @@
         let DEBUG = false;
         const checkbox = document.querySelector("#debug");
         checkbox.addEventListener("change", () => {
-            if (checkbox.checked)
-                DEBUG = true;
-            else
-                DEBUG = false;
+            if (checkbox.checked) DEBUG = true;
+            else DEBUG = false;
         });
     </script>
 
