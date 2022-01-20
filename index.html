@@ -2,22 +2,53 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PyJaC Coin Drop Project | Team #18</title>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-  </style>
-  <script src="p5/p5.js"></script>
-  <script type="module" src="sketch.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyJaC Coin Drop Project | Team #18</title>
+    <!-- CSS Stylesheet -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Load p5 library -->
+    <script src="p5/p5.js"></script>
 </head>
 
 <body>
-  <main>
-  </main>
+    <header>
+        <h2>Team #18 | PyJaC Coin Drop</h2>
+    </header>
+
+    <main>
+        <!-- Checkbox for debug mode -->
+        <div>
+            <input type="checkbox" id="debug" name="debug">
+            <label for="debug">Debug Mode</label>
+            |
+            <a href="https://github.com/FFFiend/PyJac-Coin-Drop">Source</a>
+        </div>
+
+        <!-- Container for p5 sketch canvas -->
+        <div id="simulation"></div>
+
+        <!-- Debug information, displayed if debug mode is ON -->
+        <div id="controls">
+        </div>
+    </main>
+
+    <!-- First, add listener to debug mode checkbox -->
+    <script>
+        // global var indicating if debug mode is on or not
+        let DEBUG = false;
+        const checkbox = document.querySelector("#debug");
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked)
+                DEBUG = true;
+            else
+                DEBUG = false;
+        });
+    </script>
+
+    <!-- Then load sketch -->
+    <script type="module" src="sketch.js"></script>
 </body>
 
 </html>
+
