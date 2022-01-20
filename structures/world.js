@@ -1,9 +1,4 @@
-import {
-    POND_COLOR, COIN_COLOR,
-    COIN_SIZE, DROP_POINT,
-    WATER_PARTICLES, AIR_PARTICLES
-} from "./constants.js"
-
+import { POND_COLOR } from "./constants.js"
 import { Water } from "./water.js";
 import { Coin } from "./coin.js";
 import { Air } from "./air.js"
@@ -48,8 +43,8 @@ export class World {
     }
 
     drawPond() {
-        let w = this.p.width;
-        let h = this.p.height;
+        const w = this.p.width;
+        const h = this.p.height;
 
         this.p.fill(POND_COLOR);
 
@@ -64,8 +59,14 @@ export class World {
     }
 
     drawGrid() {
+        // Red line for pond sections.
+        this.p.stroke("#ff0000");
         this.p.line(150, 0, 150, this.p.height);
         this.p.line(450, 0, 450, this.p.height);
+        // Black line for air section.
+        this.p.stroke(0);
+        const h = this.p.height;
+        this.p.line(0, h*3/4-10, 600, h*3/4-10);
     }
 }
 
