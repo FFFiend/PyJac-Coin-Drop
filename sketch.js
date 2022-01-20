@@ -1,9 +1,19 @@
+class Vector {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    add(other) {
+        this.x = this.x + other.x;
+        this.y = this.y + other.y;
+    }
+}
+
 // Using this pattern prevents p5 from polluting
 // the global namespace.
 const sketch = P5 => {
-    let x = 50;
-    let y = 50;
-    let dir = "R";
+    let location = new Vector(50, 50);
 
     P5.setup = () => {
         P5.createCanvas(600, 400);
@@ -12,16 +22,13 @@ const sketch = P5 => {
     P5.draw = () => {
         P5.background("#f2f2f2");
 
-        if (dir == "R") x += 4;
-        if (dir == "L") x -= 4;
+        P5.ellipse(location.x, location.y, 20, 20);
+        let velocity = new Vector(Math.random() * 2, Math.random() * 2);
+        location.add(velocity);
 
-        if (x + 10 > P5.width) dir = "L";
-        if (x - 10 < 0) dir = "R";
-
-        P5.ellipse(x, y, 20, 20);
     }
 }
 
 // Instantiate and run sketch.
-const instance = new p5(sketch);
+const instance = new p5(sketch, "simulation");
 
