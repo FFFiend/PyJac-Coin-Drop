@@ -11,9 +11,8 @@ const sketch = p => {
 
     p.draw = () => {
         p.background("#f2f2f2");
-        world.drawPond();
-        world.drawWater();
-        world.drawCoin();
+        world.update();
+        world.display();
     }
 }
 
