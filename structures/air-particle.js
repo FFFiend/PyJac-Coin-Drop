@@ -1,27 +1,29 @@
+import {
+    AIR_MASS, AIR_RADIUS
+} from "./constants.js";
+
 import { Particle } from "./particle.js";
 
-class AirParticle extends Particle {
-  constructor(location, velocity, mass) {
-    super(location, velocity, mass);
-    
-  }
+export class AirParticle extends Particle {
+    constructor(p, location) {
+        super(p, location);
+    }
 
+    display() {
+        const { x, y } = this.location;
+        this.p.ellipse(x, y, AIR_RADIUS);
+    }
 
-  display() {
-    stroke(0);
-    fill(175);
-    ellipse(location.x,location.y,mass*16,mass*16);
-}
-
-  airpart_update(){
-
-    this.acceleration = Particle.random2D();
-
-    this.velocity.add(this.acceleration)
-    this.velocity.limit(this.maxvel)
-    this.location.add(this.velocity)
-  }
-
-
-
+    update() {
+        /*
+        // create a random acceleration vector
+        this.acceleration = p5.Vector.random2D();
+        // add acceleration to velocity
+        this.velocity.add(this.acceleration);
+        // add velocity to location
+        this.location.add(this.velocity);
+        */
+        this.velocity = p5.Vector.random2D();
+        this.location.add(this.velocity);
+    }
 }
