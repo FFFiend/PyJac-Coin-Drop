@@ -1,0 +1,17 @@
+body {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+header {
+    margin-top: 3vh;
+}
+
+main {
+    margin-top: 6vh;
+}
+
+#simulation {
+    margin: 1vh 1vw;
+}
+
