@@ -1,21 +1,38 @@
-export class Liquid {
-    constructor(x, y, w, h, c) {
-        // x and y represent the coordinates of our "particle",
-        // width and height represent its width and height, and
-        // c represents the coefficient of the drag force.
-        // The equation of the force of drag is
-        // F_d = -0.5c*(v^2)*A*v_d
-        this.x = x
-        this.y = y
-        this.width = w
-        this.height = h
-        this.constant = c
+import {
+    WATER_PARTICLES, WATER_COLOR,
+} from "./constants.js";
+
+import { WaterParticle } from "./water-particle.js";
+
+export class Water {
+    // provide the p5 library.
+    constructor(p) {
+        this.p = p;
+
+        // Store particles.
+        this.particles = [];
+
+        for (let n = 0; n < WATER_PARTICLES; n++) {
+            const location = this.p.createVector(50 * (n+1), 10 * (n+1));
+            this.particles.push(new WaterParticle(p, location));
+        }
     }
-  
+
+    update() {
+        for (const particle of this.particles) {
+            particle.update();
+        }
+    }
+
     display() {
-        noStroke();
-        fill(175);
-        rect(this.x, this.y, this.w, this.h);
+        if (DEBUG) this.p.stroke(0);
+        else this.p.noStroke();
+
+        this.p.fill(WATER_COLOR);
+
+        for (const particle of this.particles) {
+            particle.display();
+        }
     }
-  
-  }
+}
+
