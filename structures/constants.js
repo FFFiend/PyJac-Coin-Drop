@@ -4,7 +4,6 @@ export const G_CONSTANT = 0.5;
 // mass of the "earth"
 export const WORLD_MASS = 50000;
 export const CANVAS_SIZE = { x: 600, y: 400 };
-export const AIR_BOUNDARY = 275
 // distance to the "center" of the world, used for gravity
 // effects. the distance is kept large enough so that
 // variations in the distance of attracted objects also
@@ -61,4 +60,5 @@ export const COIN_MASS = 100;
 export const AIR_PARTICLES = 15;
 export const AIR_MASS = 1;
 export const AIR_RADIUS = 5;
+export const AIR_BOUNDARY = 275
 

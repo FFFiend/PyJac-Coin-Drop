@@ -6,7 +6,7 @@ const sketch = p => {
     const world = new World(p);
 
     p.setup = () => {
-        p.createCanvas(600, 400);
+        p.createCanvas(CANVAS_SIZE.x, CANVAS_SIZE.y);
     }
 
     p.draw = () => {
