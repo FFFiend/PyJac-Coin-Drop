@@ -1,7 +1,7 @@
 export class Particle {
-    constructor(p, location) {
+    constructor(p, x, y) {
         this.p = p;
-        this.location = location;
+        this.location = this.p.createVector(x,y);
         this.velocity = this.p.createVector(0, 0);
         this.acceleration = this.p.createVector(0, 0);
     }

@@ -5,13 +5,24 @@ import {
 import { Particle } from "./generic-particle.js";
 
 export class AirParticle extends Particle {
-    constructor(p, location) {
-        super(p, location);
+    constructor(p, x, y) {
+        super(p, x, y);
     }
 
     display() {
         const { x, y } = this.location;
         this.p.ellipse(x, y, AIR_RADIUS);
+    }
+
+    detectCollision2() {
+
+        if (this.particle.location.x == this.p.width || this.particle.location.x == 0){
+            this.particle.velocity.x *= -1;
+        }
+        if (this.particle.location.y == this.p.height){
+            this.particle.velocity.y *= -1
+            // if the speed is less than some max, then bounce back, else exit frame and delete the particle
+        }
     }
 
     update() {
@@ -22,5 +33,7 @@ export class AirParticle extends Particle {
         this.velocity.add(this.acceleration);
         // add velocity to location
         this.location.add(this.velocity);
+
+        this.detectCollision2();
     }
 }
