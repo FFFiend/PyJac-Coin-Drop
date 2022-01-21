@@ -1,4 +1,5 @@
 /* General */
+import {CANVAS_SIZE} from "./constant.js";
 // gravitational constant
 export const G_CONSTANT = 0.5;
 // mass of the "earth"
