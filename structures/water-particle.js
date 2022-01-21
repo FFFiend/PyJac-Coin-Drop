@@ -1,7 +1,12 @@
 import {
     WATER_MASS, WATER_RADIUS,
     G_CONSTANT, WORLD_MASS,
-    WORLD_CENTER_DISTANCE
+    WORLD_CENTER_DISTANCE,
+    POND_SECTION_A, 
+    POND_SECTION_B,
+    leftCurve, centerCurve,
+    rightCurve
+
 } from "./constants.js";
 
 import { Particle } from "./generic-particle.js";
@@ -27,7 +32,7 @@ export class WaterParticle extends Particle {
         this.location.add(this.velocity);
         // clear acceleration at the end, since after all forces
         // are applied, there is no more acceleration (remember,
-        // a force is needed to accelerate an object, which tehen
+        // a force is needed to accelerate an object, which then
         // affects velocity, but velocity on its doesn't change,
         // because an object in motion stays in motion!)
         this.acceleration.mult(0);
@@ -88,13 +93,21 @@ export class WaterParticle extends Particle {
         // Simply check if it hits a wall, and
         // then apply the "reaction" force, which
         // is just gforce in the opposite direction.
-        if (this.location.y + WATER_RADIUS > this.p.height) {
-            this.location.y = this.p.height - WATER_RADIUS;
-            this.velocity.y *= -1;
+        if (this.location.y + WATER_RADIUS < POND_SECTION_A) {
+            if (this.location.x <= this.location.x.leftCurve) {
+                this.velocity.y *= -1;
+            }
         }
-        else if (this.location.y - WATER_RADIUS < 0) {
-            this.location.y = 0 + WATER_RADIUS;
-            this.velocity.y *= -1;
+        else if (this.location.y - WATER_RADIUS > POND_SECTION_B) {
+            if (this.location.x <= this.location.x.rightCurve) {
+                this.velocity.y *= -1;
+            }
+        }
+        else {
+            if (this.location.x <= this.location.x.centerCurve)
+            {
+                this.velocity.y *= -1;
+            }
         }
     }
 }
