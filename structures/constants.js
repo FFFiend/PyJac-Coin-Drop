@@ -34,6 +34,11 @@ export const rightCurve = x => {
     // TODO
     return -29673.98 + 219.219 * x + -0.60268 * (x ** 2) + 0.0007338536 * (x ** 3) + -3.341358 * (10 ** -7) * (x ** 4);
 }
+// constant for right end of left curve
+export const POND_SECTION_A = 150
+// constant for right end of middle curve
+export const POND_SECTION_B = 450
+
 
 
 /* Water */
