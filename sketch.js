@@ -1,5 +1,5 @@
 import { World } from "./structures/world.js";
-
+import { CANVAS_SIZE } from "./constant.js";
 // Using this pattern prevents p5 from polluting
 // the global namespace.
 const sketch = p => {
