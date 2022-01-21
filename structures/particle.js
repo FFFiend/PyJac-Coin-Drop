@@ -2,13 +2,16 @@
 
 // instead of "Mover", name the class "Particle"
 // and also export it so we can use it in other files
-export class Particle {
-    constructor(location, velocity, mass) {
+import { Vector } from "./vector.js"
+
+export class Particle extends Vector {
+    constructor(location, velocity, mass, maxvel) {
         this.location = location;
         this.velocity = velocity;
         this.acceleration = acceleration;
         this.mass = mass;
         this.force = 0
+        this.maxvel = maxvel
     }   
        
     applyForce(force) {
@@ -22,11 +25,6 @@ export class Particle {
         acceleration.mult(0);
     }
        
-    display() {
-        stroke(0);
-        fill(175);
-        ellipse(location.x,location.y,mass*16,mass*16);
-    }
 
 
     checkEdges() {
@@ -41,6 +39,15 @@ export class Particle {
         if (location.y > height) {
             velocity.y *= -1;
             location.y = height;
+        }
+    }
+
+    limit (maxmag){
+
+        if (this.magnitude > maxmag){
+            this.magnitude = maxmag
+
+
         }
     }
 
