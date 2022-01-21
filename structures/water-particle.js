@@ -34,6 +34,18 @@ export class WaterParticle extends Particle {
         this.detectCollision();
     }
 
+    getPondSection() {
+        if (this.location.x < 150) {
+            return 1;
+        } 
+        if ( 150 <= this.location.x <= 450) {
+            return 2;
+        }
+        if (this.location > 450) {
+            return 3;
+        }
+    }
+
     applyForce(force) {
         // F = m*a, so to get change in acceleration
         // we use a = F/m, i.e divide force by mass.
