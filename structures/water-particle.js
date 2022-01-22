@@ -4,7 +4,6 @@ import {
     WORLD_CENTER_DISTANCE,
     leftCurve, centerCurve,
     rightCurve
-
 } from "./constants.js";
 
 import { Particle } from "./generic-particle.js";
@@ -20,33 +19,31 @@ export class WaterParticle extends Particle {
     }
 
     update() {
-        // Get force by gravity.
+        // First, we get vectors for all forces that are acting
+        // on the particle.
         const gforce = this.getGravityForce();
-        // apply gravity
-        this.applyForce(gforce)
-        // add acceleration to velocity
-        this.velocity.add(this.acceleration);
-        // add velocity to location
-        this.location.add(this.velocity);
-        // clear acceleration at the end, since after all forces
-        // are applied, there is no more acceleration (remember,
-        // a force is needed to accelerate an object, which then
-        // affects velocity, but velocity on its doesn't change,
-        // because an object in motion stays in motion!)
-        this.acceleration.mult(0);
-        this.detectCollision();
-    }
 
-    getPondSection() {
-        if (this.location.x + WATER_RADIUS < 150) {
-            return 1;
-        } 
-        if ( 150 <= this.location.x + WATER_RADIUS && this.location.x + WATER_RADIUS <= 450) {
-            return 2;
-        }
-        if (this.location + WATER_RADIUS > 450) {
-            return 3;
-        }
+        // Then we apply all those forces.
+        this.applyForce(gforce)
+
+        // The forces affect acceleration, so next we
+        // apply acceleration to the particle, by
+        // updating it's velocity.
+        this.velocity.add(this.acceleration);
+
+        // After that we update it's location by applying
+        // the velocity.
+        this.location.add(this.velocity);
+
+        // We clear acceleration at the end, since after forces
+        // are applied, there is no more acceleration (because
+        // a force is needed to accelerate an object, which then
+        // affects velocity, but velocity on its own doesn't
+        // change - an object in motion stays in motion!)
+        this.acceleration.mult(0);
+
+        // Finally we detect collisions for the particle.
+        this.detectCollision();
     }
 
     applyForce(force) {
