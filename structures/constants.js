@@ -45,7 +45,7 @@ export const POND_SECTION_B = 450
 /* Water */
 export const WATER_COLOR = "#0000ff";
 export const WATER_RADIUS = 5;
-export const WATER_PARTICLES = 5;
+export const WATER_PARTICLES = 40;
 export const WATER_MASS = 5;
 
 
