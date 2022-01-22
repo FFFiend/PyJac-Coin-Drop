@@ -14,13 +14,13 @@ export class AirParticle extends Particle {
         this.p.ellipse(x, y, AIR_RADIUS);
     }
 
-    detectCollision2() {
+    detectCollision() {
 
-        if (this.particle.location.x == this.p.width || this.particle.location.x == 0){
-            this.particle.velocity.x *= -1;
+        if (this.location.x + AIR_RADIUS >= this.p.width || this.location.x - AIR_RADIUS <= 0){
+            this.velocity.x *= -1;
         }
-        if (this.particle.location.y == this.p.height){
-            this.particle.velocity.y *= -1
+        if (this.location.y + AIR_RADIUS >= this.p.height || this.location.y - AIR_RADIUS <= 0){
+            this.velocity.y *= -1
             // if the speed is less than some max, then bounce back, else exit frame and delete the particle
         }
     }
@@ -34,6 +34,6 @@ export class AirParticle extends Particle {
         // add velocity to location
         this.location.add(this.velocity);
 
-        this.detectCollision2();
+        this.detectCollision();
     }
 }
