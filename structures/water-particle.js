@@ -83,8 +83,8 @@ export class WaterParticle extends Particle {
         // is created by us, the constants and masses are mostly
         // arbitrary, tweaked until everything looks roughly
         // realistic.
-        const strength = (G_CONSTANT * WATER_MASS * WORLD_MASS) / (distance ** 2);
-        force.mult(strength);
+        
+        force.mult(0.98);
         return force;
     }
 
