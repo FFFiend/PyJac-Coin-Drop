@@ -1,5 +1,5 @@
 import {
-    WATER_PARTICLES, WATER_COLOR,
+    WATER_PARTICLES, WATER_COLOR, WATER_RADIUS
 } from "./constants.js";
 
 import { WaterParticle } from "./water-particle.js";
@@ -13,8 +13,8 @@ export class Water {
         this.particles = [];
 
         for (let n = 0; n < WATER_PARTICLES; n++) {
-            const x = 50 * (n+1);
-            const y =  10 * (n+1);
+            const x = 30 * (n*(0.25)) + 150 + WATER_RADIUS;
+            const y = 275;
             this.particles.push(new WaterParticle(p, x, y));
         }
     }
