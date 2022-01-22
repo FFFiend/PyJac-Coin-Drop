@@ -13,7 +13,7 @@ export class Water {
         this.particles = [];
 
         for (let n = 0; n < WATER_PARTICLES; n++) {
-            const location = this.p.createVector(50 * (n+1), 10 * (n+1));
+            const location = (50 * (n+1), 10 * (n+1));
             this.particles.push(new WaterParticle(p, location));
         }
     }
