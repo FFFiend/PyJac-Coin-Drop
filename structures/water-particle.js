@@ -59,53 +59,51 @@ export class WaterParticle extends Particle {
         this.acceleration.add(force);
     }
 
+    // Returns vector for force of gravity.
     getGravityForce() {
-        // The "ground" attracting the particle
-        // is located directly below it's own location.
         const groundX = this.location.x
-        const groundY = WORLD_CENTER_DISTANCE;
+        const groundY = this.getPondBoundary();
         const ground  = this.p.createVector(groundX, groundY);
-        // Subtracting ground vector from location vector
-        // gives a vector pointing all the way from the
-        // particle to the ground.
         const force = p5.Vector.sub(ground, this.location);
-        // The magnitude of it gives the distance between
-        // particle and ground.
-        const distance = this.p.constrain(force.mag(), 10, 1500);
-        // We then normalize it, since currently only the
-        // direction is accurate. The magnitude represents
-        // the distance, not the actual force due to gravity.
         force.normalize();
-        // Now we use the force due to gravity formula to find
-        // the actualy magnitude of the force. Since this world
-        // is created by us, the constants and masses are mostly
-        // arbitrary, tweaked until everything looks roughly
-        // realistic.
-        
-        force.mult(0.98);
+        force.mult(0.098);
         return force;
     }
 
     detectCollision() {
-        // Rudimentary collision detection, only for upper/lower walls.
-        // Simply check if it hits a wall, and
-        // then apply the "reaction" force, which
-        // is just gforce in the opposite direction.
-        
+        // Reverse velocity when it hits lower boundary.
+        const boundary = this.getPondBoundary();
+        if (this.location.y + WATER_RADIUS >= boundary) {
+            this.location.y = boundary - WATER_RADIUS;
+            this.velocity.y *= -1;
+        }
+    }
+
+    // Returns section of the pond the particle is
+    // currently inside.
+    getPondSection() {
+        if (this.location.x < 150) {
+            return 1;
+        }
+        if (150 <= this.location.x && this.location.x <= 450) {
+            return 2;
+        }
+        if (this.location.x > 450) {
+            return 3;
+        }
+    }
+
+    // Gets the lower boundary for the particle based on its
+    // pond section.
+    getPondBoundary() {
         if (this.getPondSection() == 1) {
-            if (this.location.x + WATER_RADIUS <= (this.p.height - leftCurve(this.location.x))) {
-                this.velocity.y *= -1;
-            }
+            return this.p.height - leftCurve(this.location.x);
         }
-        else if (this.getPondSection() == 2) {
-            if (this.location.x + WATER_RADIUS<= (this.p.height - centerCurve(this.location.x))) {
-                this.velocity.y *= -1;
-            }
+        if (this.getPondSection() == 2) {
+            return this.p.height - centerCurve(this.location.x);
         }
-        else {
-            if (this.location.x + WATER_RADIUS<= (this.p.height - rightCurve(this.location.x))) {
-                this.velocity.y *= -1;
-            }
+        if (this.getPondSection() == 3) {
+            return this.p.height - rightCurve(this.location.x);
         }
     }
 }
