@@ -12,8 +12,8 @@ import {
 import { Particle } from "./generic-particle.js";
 
 export class WaterParticle extends Particle {
-    constructor(p, location) {
-        super(p, location)
+    constructor(p, x, y) {
+        super(p, x, y)
     }
 
     display() {
