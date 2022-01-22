@@ -14,7 +14,7 @@ export class Air {
 
         for (let n = 0; n < AIR_PARTICLES; n++) {
             const x = 10 * (n+1);
-            const y =  50 * (n+1);
+            const y =  50;
             this.particles.push(new AirParticle(p, x, y));
         }
     }

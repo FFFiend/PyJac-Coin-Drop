@@ -1,5 +1,5 @@
 import {
-    AIR_MASS, AIR_RADIUS
+    AIR_MASS, AIR_RADIUS, AIR_BOUNDARY
 } from "./constants.js";
 
 import { Particle } from "./generic-particle.js";
@@ -19,7 +19,7 @@ export class AirParticle extends Particle {
         if (this.location.x + AIR_RADIUS >= this.p.width || this.location.x - AIR_RADIUS <= 0){
             this.velocity.x *= -1;
         }
-        if (this.location.y + AIR_RADIUS >= this.p.height || this.location.y - AIR_RADIUS <= 0){
+        if (this.location.y + AIR_RADIUS >= AIR_BOUNDARY || this.location.y - AIR_RADIUS <= 0){
             this.velocity.y *= -1
             // if the speed is less than some max, then bounce back, else exit frame and delete the particle
         }
