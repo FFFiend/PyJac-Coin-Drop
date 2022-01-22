@@ -13,7 +13,7 @@ export class Air {
         this.particles = [];
 
         for (let n = 0; n < AIR_PARTICLES; n++) {
-            const location = this.p.createVector(10 * (n+1), 50 * (n+1));
+            const location = (10 * (n+1), 50 * (n+1));
             this.particles.push(new AirParticle(p, location));
         }
     }
