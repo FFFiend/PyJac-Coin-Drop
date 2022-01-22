@@ -2,8 +2,6 @@ import {
     WATER_MASS, WATER_RADIUS,
     G_CONSTANT, WORLD_MASS,
     WORLD_CENTER_DISTANCE,
-    POND_SECTION_A, 
-    POND_SECTION_B,
     leftCurve, centerCurve,
     rightCurve
 
@@ -94,18 +92,18 @@ export class WaterParticle extends Particle {
         // then apply the "reaction" force, which
         // is just gforce in the opposite direction.
         
-        if (this.getPondSection == 1) {
-            if (this.location.x + WATER_RADIUS <= leftCurve(this.location.x)) {
+        if (this.getPondSection() == 1) {
+            if (this.location.x + WATER_RADIUS <= (this.p.height - leftCurve(this.location.x))) {
                 this.velocity.y *= -1;
             }
         }
-        else if (this.getPondSection == 2) {
-            if (this.location.x + WATER_RADIUS<= centerCurve(this.location.x)) {
+        else if (this.getPondSection() == 2) {
+            if (this.location.x + WATER_RADIUS<= (this.p.height - centerCurve(this.location.x))) {
                 this.velocity.y *= -1;
             }
         }
         else {
-            if (this.location.x + WATER_RADIUS<= rightCurve(this.location.x)) {
+            if (this.location.x + WATER_RADIUS<= (this.p.height - rightCurve(this.location.x))) {
                 this.velocity.y *= -1;
             }
         }
