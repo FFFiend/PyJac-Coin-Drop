@@ -40,13 +40,13 @@ export class WaterParticle extends Particle {
     }
 
     getPondSection() {
-        if (this.location.x < 150) {
+        if (this.location.x + WATER_RADIUS < 150) {
             return 1;
         } 
-        if ( 150 <= this.location.x <= 450) {
+        if ( 150 <= this.location.x + WATER_RADIUS && this.location.x + WATER_RADIUS <= 450) {
             return 2;
         }
-        if (this.location > 450) {
+        if (this.location + WATER_RADIUS > 450) {
             return 3;
         }
     }
@@ -93,19 +93,19 @@ export class WaterParticle extends Particle {
         // Simply check if it hits a wall, and
         // then apply the "reaction" force, which
         // is just gforce in the opposite direction.
-        if (this.location.y + WATER_RADIUS < POND_SECTION_A) {
-            if (this.location.x <= this.location.x.leftCurve) {
+        
+        if (this.getPondSection == 1) {
+            if (this.location.x + WATER_RADIUS <= leftCurve(this.location.x)) {
                 this.velocity.y *= -1;
             }
         }
-        else if (this.location.y - WATER_RADIUS > POND_SECTION_B) {
-            if (this.location.x <= this.location.x.rightCurve) {
+        else if (this.getPondSection == 2) {
+            if (this.location.x + WATER_RADIUS<= centerCurve(this.location.x)) {
                 this.velocity.y *= -1;
             }
         }
         else {
-            if (this.location.x <= this.location.x.centerCurve)
-            {
+            if (this.location.x + WATER_RADIUS<= rightCurve(this.location.x)) {
                 this.velocity.y *= -1;
             }
         }
