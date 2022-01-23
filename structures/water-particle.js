@@ -1,7 +1,5 @@
 import {
     WATER_MASS, WATER_RADIUS,
-    G_CONSTANT, WORLD_MASS,
-    WORLD_CENTER_DISTANCE,
     leftCurve, centerCurve,
     rightCurve
 } from "./constants.js";
