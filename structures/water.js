@@ -13,13 +13,13 @@ export class Water {
         this.particles = [];
 
         for (let n = 0; n < WATER_PARTICLES; n++) {
-            if (n > 40) {
-                const x = 30 * (n*(0.25))- 30*11*0.25 - 50;
+            if (n > 50) {
+                const x = 30 * (n*(0.2))- 30*11*0.25 - 50;
                 const y = 275 + 20;
                 this.particles.push(new WaterParticle(p, x, y));
             }
             else{
-              const x = 30 * (n*(0.25)) + 150 + WATER_RADIUS;
+              const x = 30 * (n*(0.2)) + 150 + WATER_RADIUS;
             const y = 275;
             this.particles.push(new WaterParticle(p, x, y));  
             }
