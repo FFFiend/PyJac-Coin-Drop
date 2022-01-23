@@ -1,6 +1,7 @@
 # PyJaC: Rebooted (2022)
 
 This repository contains our project for the PyJaC: Rebooted hackathon.
+https://fffiend.github.io/PyJac-Coin-Drop/ CHECK THIS LINK OUT TO DEMO!!!
 
 ## Project Details
 
