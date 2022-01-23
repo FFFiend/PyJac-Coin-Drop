@@ -2,6 +2,8 @@
 
 This repository contains our project for the PyJaC: Rebooted hackathon.
 
+https://fffiend.github.io/PyJac-Coin-Drop/ CHECK THIS LINK OUT TO DEMO!!!
+
 ## Project Details
 
 ### Category: Beginner
@@ -14,11 +16,7 @@ This repository contains our project for the PyJaC: Rebooted hackathon.
 
 ### Prompt
 
-> NOTE: The secondary prompts are tentative right now, we might eventually remove them entirely or add more depending on how the project goes.
-
-Our main prompt is "Simulate a coin drop in a pond". The project also incorporates aspects of some other prompts:
-- Write a program that has an element of randomness in it.
-- Simulate a random walk to explain a natural phenomena
+Our main prompt is "Simulate a coin drop in a pond".
 
 ### Design
 
