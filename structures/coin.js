@@ -1,6 +1,6 @@
 import {
     COIN_SIZE, COIN_COLOR,
-    COIN_MASS, DROP_POINT, WORLD_CENTER_DISTANCE
+    COIN_MASS, DROP_POINT
 } from "./constants.js";
 import { Particle } from "./generic-particle.js";
 export class Coin extends Particle {
@@ -9,7 +9,6 @@ export class Coin extends Particle {
 
         // Create location vector using drop point
         // coordinates.
-        
         this.location = this.p.createVector(300, 200);
         this.velocity = this.p.createVector(0, 0);
         this.acceleration = this.p.createVector(0, 0);
@@ -67,7 +66,7 @@ export class Coin extends Particle {
         // The "ground" attracting the particle
         // is located directly below it's own location.
         const groundX = this.location.x
-        const groundY = WORLD_CENTER_DISTANCE;
+        const groundY = this.p.height;
         const ground  = this.p.createVector(groundX, groundY);
         // Subtracting ground vector from location vector
         // gives a vector pointing all the way from the
