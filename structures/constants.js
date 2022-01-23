@@ -1,43 +1,28 @@
 /* General */
-// gravitational constant
-export const G_CONSTANT = 0.5;
-// mass of the "earth"
-export const WORLD_MASS = 50000;
 export const CANVAS_SIZE = { x: 600, y: 400 };
-// distance to the "center" of the world, used for gravity
-// effects. the distance is kept large enough so that
-// variations in the distance of attracted objects also
-// affect the magnitude of the force of gravity, but at
-// the same time their effect is not so large that at
-// close distances the force is extremely large, or at
-// large distances the force is extremely small. essentially,
-// if this number is larger, then the attracted object's distance
-// from the ground will matter less, if small then it will
-// have very strong affects on the gravitational force.
-// TL;DR think thrice before changing these numbers.
-export const WORLD_CENTER_DISTANCE = 700;
+
 
 /* Pond */
 export const POND_COLOR = "#42f569";
 // given the x coordinate, returns the y coordinate
 // for the edge of the pond in the left section.
 export const leftCurve = x => {
-   
     return 100.785 + 0.146152 * x + -0.00424588 * (x ** 2) + 0.0000781196 * (x ** 3) + -3.7185 * (10 ** -7) * (x ** 4);
-}
+};
 // same as above, but for the center section
 export const centerCurve = x => {
     return 781.4137 + -9.53355 * x + 0.046749 * (x ** 2) + -0.000102768 * (x ** 3) + 8.54967 * (10 ** -8) * (x ** 4);
-}
+};
 // same as above, but for the right curve
 export const rightCurve = x => {
     return -29673.98 + 219.219 * x + -0.60268 * (x ** 2) + 0.0007338536 * (x ** 3) + -3.341358 * (10 ** -7) * (x ** 4);
-}
+};
 // constant for right end of left curve
-export const POND_SECTION_A = 150
+export const POND_SECTION_A = 150;
 // constant for right end of middle curve
-export const POND_SECTION_B = 450
-
+export const POND_SECTION_B = 450;
+// the "center" of the four pond quadrants for water particles
+export const POND_QUAD_CENTER = { x: CANVAS_SIZE.x/2, y: CANVAS_SIZE.y*13/16 };
 
 
 /* Water */
