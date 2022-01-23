@@ -15,3 +15,10 @@ main {
     margin: 1vh 1vw;
 }
 
+#restart {
+    border-style: solid;
+    border-color: grey;
+    border-radius: 3px;
+    border-width: 1px;
+}
+

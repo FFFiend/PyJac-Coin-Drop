@@ -3,7 +3,7 @@ import { CANVAS_SIZE } from "./structures/constants.js";
 // Using this pattern prevents p5 from polluting
 // the global namespace.
 const sketch = p => {
-    const world = new World(p);
+    let world = new World(p);
 
     p.setup = () => {
         p.createCanvas(CANVAS_SIZE.x, CANVAS_SIZE.y);
@@ -19,7 +19,13 @@ const sketch = p => {
     pauseBtn.addEventListener("change", () => {
         if (pauseBtn.checked) p.noLoop();
         else p.loop();
-    })
+    });
+
+    const restartBtn = document.querySelector("#restart");
+    restartBtn.addEventListener("click", () => {
+        world.reset();
+        p.frameCount = 0;
+    });
 }
 
 // Instantiate and run sketch.

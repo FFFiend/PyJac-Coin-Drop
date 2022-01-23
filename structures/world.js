@@ -88,5 +88,11 @@ export class World {
         this.p.text(this.p.frameCount, 5, 15);
         this.p.noFill();
     }
+
+    reset() {
+        this.water = new Water(this.p);
+        this.air   = new Air(this.p);
+        this.coin  = new Coin(this.p);
+    }
 }
 
