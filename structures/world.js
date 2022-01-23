@@ -1,4 +1,9 @@
-import { POND_COLOR } from "./constants.js"
+import {
+    POND_COLOR, AIR_BOUNDARY,
+    POND_SECTION_A, POND_SECTION_B,
+    POND_QUAD_CENTER
+} from "./constants.js"
+
 import { Water } from "./water.js";
 import { Coin } from "./coin.js";
 import { Air } from "./air.js"
@@ -12,7 +17,6 @@ export class World {
     // its functions.
     constructor(p) {
         this.p = p;
-
         this.water = new Water(p);
         this.air   = new Air(p);
         this.coin  = new Coin(p);
@@ -20,8 +24,8 @@ export class World {
 
     update() {
         this.air.update();
-        this.water.update();
         this.coin.update();
+        this.water.update();
     }
 
     display() {
@@ -34,11 +38,12 @@ export class World {
         this.coin.display();
 
         if (DEBUG) {
-            // Air is invisible, so only display
-            // under debug mode.
+            // Only display air in debug mode.
             this.air.display();
-            // Pond section grid.
+            // Grids for different sections.
             this.drawGrid();
+            // Shows frame count
+            this.showFrameCount();
         }
     }
 
@@ -59,14 +64,29 @@ export class World {
     }
 
     drawGrid() {
-        // Red line for pond sections.
-        this.p.stroke("#ff0000");
-        this.p.line(150, 0, 150, this.p.height);
-        this.p.line(450, 0, 450, this.p.height);
-        // Black line for air section.
-        this.p.stroke(0);
-        const h = this.p.height;
-        this.p.line(0, h*3/4-10, 600, h*3/4-10);
+        // Pond sections.
+        this.p.stroke("#1E3380");
+        this.p.line(POND_SECTION_A, 0, POND_SECTION_A, this.p.height);
+        this.p.line(POND_SECTION_B, 0, POND_SECTION_B, this.p.height);
+
+        // Air boundary.
+        this.p.stroke("#33801E");
+        this.p.line(0, AIR_BOUNDARY, 600, AIR_BOUNDARY);
+
+        // Pond quadrants.
+        this.p.stroke("#801E33");
+        const { x, y } = POND_QUAD_CENTER;
+        this.p.line(x, 0, x, this.p.height);
+        this.p.line(0, y, this.p.width, y);
+
+        // Turn off stroke.
+        this.p.noStroke();
+    }
+
+    showFrameCount() {
+        this.p.fill(0);
+        this.p.text(this.p.frameCount, 5, 15);
+        this.p.noFill();
     }
 }
 
