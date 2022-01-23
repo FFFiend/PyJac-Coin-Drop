@@ -73,6 +73,7 @@ export class WaterParticle extends Particle {
         if (this.location.y + WATER_RADIUS >= boundary) {
             this.location.y = boundary - WATER_RADIUS;
             this.velocity.y *= -1;
+            this.velocity.x *= -1;
         }
     }
 
