@@ -27,12 +27,10 @@ export const leftCurve = x => {
 }
 // same as above, but for the center section
 export const centerCurve = x => {
-    // TODO
     return 781.4137 + -9.53355 * x + 0.046749 * (x ** 2) + -0.000102768 * (x ** 3) + 8.54967 * (10 ** -8) * (x ** 4);
 }
 // same as above, but for the right curve
 export const rightCurve = x => {
-    // TODO
     return -29673.98 + 219.219 * x + -0.60268 * (x ** 2) + 0.0007338536 * (x ** 3) + -3.341358 * (10 ** -7) * (x ** 4);
 }
 // constant for right end of left curve
