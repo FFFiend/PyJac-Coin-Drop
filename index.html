@@ -24,7 +24,7 @@
             <input type="checkbox" id="pause" name="pause">
             <label for="pause">Pause</label>
             |
-            <input type="checkbox" id="debug" name="debug">
+            <input checked type="checkbox" id="debug" name="debug">
             <label for="debug">Debug Mode</label>
             |
             <a href="https://github.com/FFFiend/PyJac-Coin-Drop">Source</a>
@@ -41,7 +41,7 @@
     <!-- First, add listener to debug mode checkbox -->
     <script>
         // global var indicating if debug mode is on or not
-        let DEBUG = false;
+        let DEBUG = true;
         const checkbox = document.querySelector("#debug");
         checkbox.addEventListener("change", () => {
             if (checkbox.checked) DEBUG = true;
