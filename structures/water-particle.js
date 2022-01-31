@@ -9,6 +9,8 @@ import { Particle } from "./generic-particle.js";
 export class WaterParticle extends Particle {
     constructor(p, x, y) {
         super(p, x, y)
+        this.density = 0;
+        this.velocity.add(p5.Vector.random2D().mult(0.2));
     }
 
     display() {
