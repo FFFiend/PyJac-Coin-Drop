@@ -28,8 +28,11 @@ export const POND_QUAD_CENTER = { x: CANVAS_SIZE.x/2, y: CANVAS_SIZE.y*13/16 };
 /* Water */
 export const WATER_COLOR = "#0000ff";
 export const WATER_RADIUS = 5;
-export const WATER_PARTICLES = 100;
-export const WATER_MASS = 5;
+export const WATER_PARTICLES = 20;
+export const WATER_MASS = 50;
+export const WATER_REF_DENSITY = 1;
+export const BULK_MODULUS = 3;
+export const VISCOSITY = 1;
 
 
 /* Coin */
